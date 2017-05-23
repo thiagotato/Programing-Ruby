@@ -1,0 +1,54 @@
+you are in rainforest
+there is a lodge with 2 rooms
+mosters = jaguart, elefant, komodo dragon, rhino
+
+you are in a rainforest at night
+you find out a little light shining
+What do you do? take or go on?
+> 
+take
+  you are in front of a lodge
+  It's raining
+  Are you open the door or walk around?
+  >
+  open
+    Inside is cozy
+    There is an smell of meat
+    You take a look around em see two doors
+    Do you get right, left?
+    >
+    right
+      There is a Komodo dragon
+      It notice you
+      Do you run or kick ?
+      >
+      run
+        Die("The dragon take your legs off")
+      kick
+        die("the dragon take you down and eats you body")
+      else
+        die("Your head gets hitted by log")
+    >
+    left
+      There is a jaguart eating an animail
+      You can hide you can run?
+      What do you do?
+        >
+        hide
+          You passed 3 hours hidded and the jaguart goes away, good job ! You are alive
+        Run
+          A rhino get scary of you and hit you in your back
+        else
+          You get back to forest and died with dehydration
+    
+go on
+  When you start walk you ear a noise
+  There is an elefant eating magos
+  You are hungry
+  Do you take the magos or screeming?
+  > take
+    The elephant doesn't care about you. You eat and could be rescured.
+  > screeming
+    The elephant gets annoyed and smash you.
+  > else
+    I don't know what it means
