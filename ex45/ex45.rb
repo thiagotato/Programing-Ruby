@@ -22,41 +22,67 @@ end
 
 class Engine
   def initialize
+
+    @player_cards = [] 
+    @player_cards.push(shuffle)
+    @player_cards.push(shuffle)
+
+    @bank_cards = []
+    @bank_cards.push(shuffle)
+    @bank_cards.push(shuffle)
+
+    puts "Your cards are #{@player_cards[0]} and #{@player_cards[1]}." 
+    puts "The first bank card is #{@bank_cards[0]}"
+  end
+
+  def shuffle
     start = Cards.new
     take = Random.new
     game = start.card
-    @player_card1 = game.delete_at(take.rand(0..51))
-    @player_card2 = game.delete_at(take.rand(0..51))
-    @player_scr = score(@player_card1) + score(@player_card2)
 
-    @bank_card1 = game.delete_at(take.rand(0..51))
-    @bank_card2 = game.delete_at(take.rand(0..51))
-    @bank_scr = score(@bank_card1) + score(@bank_card2)
-
+    return game.delete_at(take.rand(0..game.length - 1))
   end
 
   def score(scr)
-    
-    score = scr.gsub(/[@$!*]/, '')
-    case score
-    when 'A'
-      return 1
-    when 'J', 'Q', 'K'
-      return 10
-    else
-      return score.to_i
-    end 
+    total = 0
+    scr.each { |point|
+
+      score = point.gsub(/[@$!*]/, '')
+      case score
+      when 'A'
+        total = total + 1        
+      when 'J', 'Q', 'K'
+        total = total +  10
+      else
+        total = total + score.to_i
+      end
+    }
+    return total
+
    end
 
   def play
-    puts "Your cards are #{@player_card1} and #{@player_card2}." 
-    puts "The first bank card is #{@bank_card1}"
     puts "Would you like one more card ? Yes or No"
     puts ">"
     answer = $stdin.gets.chomp
-
-    if answer = "Yes"
-      puts "ok"
+    
+    case answer 
+    when 'Yes'
+      @player_cards.push(shuffle)
+      puts "your next card #{@player_cards[@player_cards.length - 1]}"
+      if score(@player_cards).to_i > 21
+        puts "You lose"
+      else
+        play
+      end
+    when 'No'
+      if score(@player_cards).to_i > score(@bank_cards).to_i
+        puts "You win"
+      else
+        puts "You lose"
+      end
+    else
+      play
     end
   end 
 
