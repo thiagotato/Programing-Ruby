@@ -90,11 +90,5 @@ class Engine
 
 end
 
-class Player
-  def initialize(card1, card2)
-    puts card1 + card2
-  end
-end
-
 ok = Engine.new
 op = ok.play
