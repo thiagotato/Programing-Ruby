@@ -1,4 +1,4 @@
-class PaserError < Execption
+class PaserError < Exception
 end
 
 class Sentence

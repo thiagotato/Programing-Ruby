@@ -1,6 +1,6 @@
 class Lexicon
 
-  def scan(arg)
+  def self.scan(arg)
     checker = arg.split
     analyzed = []
     checker.each { |check|
