@@ -1,0 +1,26 @@
+class C
+  puts "Just inside class definition block. Here's self:"
+  p self
+  @v = "I am an instance variable at the top level of a class body."
+  puts "And here's the instance variable @v, belonging to #{self}"
+  p @v
+  def initialize
+    @b = "Test here"
+  end
+
+  def show_var
+    puts "Inside an instance method definition block. Here's self:"
+    p self
+    puts "And here's the instance variable @v, blelonging to #{self}:"
+    p @v
+  end
+
+  def show_b
+    puts "B is here"
+    p @b
+  end
+end
+
+c = C.new
+c.show_var
+c.show_b
