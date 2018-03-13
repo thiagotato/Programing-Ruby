@@ -1,0 +1,14 @@
+class Person
+  def whole_name
+    n = $first_name + " "
+    n << "#{$middle_name} " if $middle_name
+    n << $last_name
+  end
+end
+
+david = Person.new
+$first_name = "David"
+$last_name = "Black"
+puts "David's whole name: #{david.whole_name}"
+$middle_name = "Alan"
+puts "David's new whole name: #{david.whole_name}"
