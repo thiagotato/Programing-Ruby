@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+puts "Starting #{__FILE__} checks..."
+
+commands_to_run = [
+  'bundle exec rake test',
+  'bundle exec rubocop -fs -D'
+]
+success = []
+commands_to_run.each do |c|
+  success << (system c)
+end
+unless success.all?
+  p success
+  STDERR.puts <<-EOS
+Push will be aborted!!! Fix the problem above and correct the commit.
+  EOS
+  exit(1)
+end
+puts "Finished #{__FILE__} checks..."
